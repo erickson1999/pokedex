@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React, { FC, ReactNode } from "react";
-import { SmallPokemon } from "../../interfaces";
 import { Navbar } from "../ui";
 
 interface Props {
@@ -28,6 +26,7 @@ export const Layout: FC<Props> = ({ children, title, isPokemonPage }) => {
         <meta name="author" content="Erickson Quispe" />
         <meta name="description" content={`Info sobre el pokemon ${title}`} />
         <meta name="keywords" content={`${title}, pokemon`} />
+
         {isPokemonPage && (
           <>
             <meta
@@ -49,6 +48,7 @@ export const Layout: FC<Props> = ({ children, title, isPokemonPage }) => {
             <link rel="image_src" href={getUrlImg()} />
           </>
         )}
+        <meta property="og:image" content={getUrlImg()} />
       </Head>
 
       <Navbar />
