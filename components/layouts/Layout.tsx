@@ -48,7 +48,7 @@ export const Layout: FC<Props> = ({ children, title, isPokemonPage }) => {
             <link rel="image_src" href={getUrlImg()} />
           </>
         )}
-        <meta property="og:image" content={getUrlImg()} />
+        <meta property="og:image" content="https://pokedex-ericksonrqc.vercel.app/img/banner.png" />
       </Head>
 
       <Navbar />
