@@ -6,19 +6,13 @@ interface Props {
   title: String;
   isPokemonPage: boolean;
 }
+
+console.log({ test: "test de ejecucion" });
+const origin = typeof window === "undefined" ? "" : window.location.origin;
+
 export const Layout: FC<Props> = ({ children, title, isPokemonPage }) => {
   const titleLowerCase = title.toLowerCase();
 
-  const getUrlImg = () => {
-    return `${
-      typeof window !== "undefined" && window.location.origin
-    }/img/banner.png`;
-  };
-  const getUrlPage = () => {
-    return `${
-      typeof window !== "undefined" && window.location.origin
-    }/name/${titleLowerCase}`;
-  };
   return (
     <>
       <Head>
@@ -37,18 +31,19 @@ export const Layout: FC<Props> = ({ children, title, isPokemonPage }) => {
               property="og:description"
               content={`All the information you need about ${titleLowerCase} to be the best duelist`}
             />
-            <meta property="og:image" content={getUrlImg()} />
+            <meta property="og:image" content={`${origin}/img/banner.png`} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content={getUrlPage()} />
+            <meta
+              property="og:url"
+              content={`${origin}/name/${titleLowerCase}`}
+            />
             <meta
               property="og:keywords"
               content={`pokemon, pokedex, ${titleLowerCase}`}
             />
-            <meta property="og:image:secure_url" content={getUrlImg()} />
-            <link rel="image_src" href={getUrlImg()} />
+            <link rel="image_src" href={`${origin}/img/banner.png`} />
           </>
         )}
-        <meta property="og:image" content="https://pokedex-ericksonrqc.vercel.app/img/banner.png" />
       </Head>
 
       <Navbar />
